@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="Hello">Hello World, Click Me!</string>
+  <string name="ApplicationName">PI.Samples.BasicDroid</string>
+  <string name="app_name">PI.Samples.BasicDroid</string>
+  <string name="none_paired">No devices have been paired</string>
+  <string name="transaction_type_prompt">Select</string>
+  <string-array name="transaction_type_items">
+    <item>Credit</item>
+    <item>Debit</item>
+  </string-array>
+  <string-array name="transaction_parcels">
+    <item>1</item>
+    <item>2</item>
+    <item>3</item>
+    <item>4</item>
+    <item>5</item>
+    <item>6</item>
+    <item>7</item>
+    <item>8</item>
+    <item>9</item>
+    <item>10</item>
+    <item>11</item>
+    <item>12</item>
+  </string-array>
+</resources>

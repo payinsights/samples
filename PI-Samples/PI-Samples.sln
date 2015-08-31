@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PI.Samples.BasicConsole", "PI.Samples.BasicConsole\PI.Samples.BasicConsole.csproj", "{84F0BDE3-9A43-40ED-B10C-7FCD49DED37A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PI.Samples.BasicDroid", "PI.Samples.BasicDroid\PI.Samples.BasicDroid.csproj", "{0AB87713-11EB-4EE0-A258-889E87EF8768}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{84F0BDE3-9A43-40ED-B10C-7FCD49DED37A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84F0BDE3-9A43-40ED-B10C-7FCD49DED37A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84F0BDE3-9A43-40ED-B10C-7FCD49DED37A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84F0BDE3-9A43-40ED-B10C-7FCD49DED37A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AB87713-11EB-4EE0-A258-889E87EF8768}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AB87713-11EB-4EE0-A258-889E87EF8768}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AB87713-11EB-4EE0-A258-889E87EF8768}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{0AB87713-11EB-4EE0-A258-889E87EF8768}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AB87713-11EB-4EE0-A258-889E87EF8768}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AB87713-11EB-4EE0-A258-889E87EF8768}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
