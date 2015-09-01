@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="PI-SDK Samples : ">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>PI-SDK Samples</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/payinsights/samples">View on GitHub</a>
+
+          <h1 id="project_title">PI-SDK Samples</h1>
+          <h2 id="project_tagline"></h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/payinsights/samples/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/payinsights/samples/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h2>
+<a id="pay-insights-sdk---samples" class="anchor" href="#pay-insights-sdk---samples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pay Insights SDK - Samples</h2>
+
+<h1>
+<a id="overview---pi-sdk-and-the-platform" class="anchor" href="#overview---pi-sdk-and-the-platform" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overview - PI-SDK and the Platform</h1>
+
+<p><strong>PI</strong> stands for <strong>Pay Insights</strong>.</p>
+
+<p><strong>PI Platform</strong> was created to easy the acceptance and processing of card transactions, abstracting several concerns like <strong>security</strong>, <strong>EMV</strong>, <strong>provisioning</strong>, and any technical requirements and let the developer only to responsibility to develop their payment application with focus on its business not on financial transaction caveats. The platform is fully <strong>PCI-compliant</strong>, and is hosted on <strong>Microsoft Azure</strong>, giving the power of scalability to the app developer and the card acceptor. With that in mind, the transaction power/processing is virtually unlimited. The platform was build with the customer in mind. Each customer has its own transaction/business process and with that in mind, we the platform has a built-in Business Engine, where you can work together with Pay Insights team and have your own transaction process made exclusive for your business! If you just want to accept financial transactions on your application, we have a pre-built transaction process that is the default one when you start using the services and it works for 99% of the customers whiling to accept credit/debit cards on your systems.</p>
+
+<p><strong>PI SDK</strong> is a very easy SDK, with a small set of APIs supported across several platforms and terminal devices. The SDK is used to communicate with the server side of the platforms, which handles the heavy lift of transaction processing. You just have to worry about create the best app for your business and we will ensure that you have the best transaction experience on the market no matter if its an EMV, Magnetic, Contactless, terminal, checkout, vending machine, cell phone, e-commerce, whatever! <strong>No matter the way you want to accept it, we will make it work thru the SDK!</strong> (for more details and/or customization, please get in touch with us at <a href="mailto:hello@payinsights.com">hello@payinsights.com</a>)</p>
+
+<p>Well, enough chat, let's see how it works!</p>
+
+<h1>
+<a id="getting-started-with-pi-sdk" class="anchor" href="#getting-started-with-pi-sdk" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting started with PI-SDK</h1>
+
+<p>In this repo, you will find samples to all platforms currently supported by the SDK. </p>
+
+<p>In order to use the SDK, you must follow this 6 simple steps:</p>
+
+<p><strong>1. Install PI.SDK Nuget Package</strong></p>
+
+<p>From the Package Manager console, run the following command:</p>
+
+<pre><code>PM&gt; Install-Package PI.SDK 
+</code></pre>
+
+<p>You can also install the Nuget Package from Visual Studio or Xamarin Studio IDEs, or just go to <a href="http://www.nuget.org/packages/PI.SDK/">http://www.nuget.org/packages/PI.SDK/</a></p>
+
+<p><strong>2. Get your ApplicationId, ApplicationSecret and CustomerId</strong></p>
+
+<p>Contact <a href="mailto:hello@payinsights.com">hello@payinsights.com</a> and get your credentials for development. Let us know how you are going to use the platform on your application, we would love to hear from you! </p>
+
+<p>Those Development credentials uses test servers that are shared with other many other people, but rest assured that the data you used at the transaction, are safely transmitted and only you have access to it. For production deployment or if for some reason you requires a dedicated Dev instance, please let us know.</p>
+
+<p><strong><em>Note: Keep in mind that if you don't get your own credentials, you are not able to run the samples or even use the SDK and it will throw some exceptions.</em></strong></p>
+
+<p><strong>3. Initialize the main SDK objects.</strong></p>
+
+<p>You have to initialize the device channel, the device manager and the Platform Context. They are core concepts of the SDK, and you can see a deep dive explanation of each one of those on the BasicConsole sample.</p>
+
+<pre><code> var channel = new SerialDeviceConnectionChannel(_port);
+ var deviceManager = new BCDeviceManager(channel);
+ PlatformContext.Initialize(_customerId, _appId, _appSecret, _deviceManager, PIEnvironment.Dev);
+</code></pre>
+
+<p><strong>4. Acquire an access token</strong></p>
+
+<pre><code>var token = PlatformContext.GetService&lt;IAuthService&gt;().Login();
+</code></pre>
+
+<p><strong>5. Setup Transaction Orchestrator</strong></p>
+
+<p>This guy is responsible to initiate and handle many events of the transaction process.</p>
+
+<pre><code>var transactionOrchestrator = PlatformContext.GetService&lt;ITransactionOrchestrator&gt;();
+transactionOrchestrator.OnError += OnError;
+transactionOrchestrator.OnProgressChanged += TransactionOrchestratorOnProgressChanged;
+transactionOrchestrator.OnTransactionFinished += TransactionOrchestratorOnTransactionFinished;
+transactionOrchestrator.OnDataRequested += TransactionOrchestratorOnDataRequested;
+</code></pre>
+
+<p><strong>6. Execute the transaction (the best part!)</strong></p>
+
+<pre><code>var parameters = new TerminalTransactionParameters
+{
+    Mode = TransactionMode.Credit,
+    Type = TransactionType.Authorization,
+    Amount = 20,
+    Parcel = 1
+};
+transactionOrchestrator.ExecuteTransaction(parameters, _token); 
+</code></pre>
+
+<p>An that is it!</p>
+
+<p>Assuming that you have a connected serial terminal/pinpad, you will be able to make transactions with EMV, Magnetic or Contactless cards! Noto that you don't see a single line of internal communication with the device, neither specific EMV implementation. All you have to do now, is to implement your payment application and let us take care of those details.</p>
+
+<p>This code is extracted from the BasicConsole sample, where you will have full details about each of those lines. The same code applies to all other supported platforms. </p>
+
+<h1>
+<a id="wrapping-up" class="anchor" href="#wrapping-up" aria-hidden="true"><span class="octicon octicon-link"></span></a>Wrapping up</h1>
+
+<p>Here you can see how easy is to perform a card present transaction using <strong>PI-SDK</strong>. You can perform e-commerce or any other kind of transactions as well.</p>
+
+<p>More samples and updates to come in the coming weeks.</p>
+
+<p>[]s</p>
+
+<p><strong>Pay Insights Team</strong></p>
+
+<p>9/1/2015 12:29:22 AM </p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">PI-SDK Samples maintained by <a href="https://github.com/payinsights">payinsights</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
