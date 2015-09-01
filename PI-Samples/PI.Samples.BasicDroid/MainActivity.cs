@@ -56,7 +56,7 @@ namespace PI.Samples.BasicDroid
                 _device.OnError += DeviceManagerOnError;
 
                 //The same platform initialization as in console
-                PlatformContext.Initialize(this, _customerId, _appId, _appSecret, _device, PIEnvironment.Simulator, "guto_surface3");
+                PlatformContext.Initialize(this, _customerId, _appId, _appSecret, _device, PIEnvironment.Dev);
 
                 _progressDialog = ProgressDialog.Show(this, "PI", "Logging in...", true);
 

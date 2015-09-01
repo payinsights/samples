@@ -31,6 +31,8 @@ Contact [hello@payinsights.com](mailto:hello@payinsights.com) and get your crede
 
 Those Development credentials uses test servers that are shared with other many other people, but rest assured that the data you used at the transaction, are safely transmitted and only you have access to it. For production deployment or if for some reason you requires a dedicated Dev instance, please let us know.
 
+***Note: Keep in mind that if you don't get your own credentials, you are not able to run the samples or even use the SDK and it will throw some exceptions.***
+
 **3. Initialize the main SDK objects.**
 
 You have to initialize the device channel, the device manager and the Platform Context. They are core concepts of the SDK, and you can see a deep dive explanation of each one of those on the BasicConsole sample.
@@ -82,3 +84,5 @@ More samples and updates to come in the coming weeks.
 []s
 
 **Pay Insights Team**
+
+9/1/2015 12:29:22 AM 

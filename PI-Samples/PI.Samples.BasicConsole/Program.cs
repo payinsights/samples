@@ -71,7 +71,7 @@ namespace PI.Samples.BasicConsole
             //The PIEnvironment sets to which platform environment the SDK will point to. Currently only Dev and Prod are supported. Note that you have AppId and Secret for each one of those platforms. 
             //This class set a context for the whole transaction process and the Initialize() method must be called only once per application execution.
             //Usually you will call this at your application startup and never call it again no matter how much transactions you will perform.
-            PlatformContext.Initialize(_customerId, _appId, _appSecret, _deviceManager, PIEnvironment.Simulator, "guto_surface3");
+            PlatformContext.Initialize(_customerId, _appId, _appSecret, _deviceManager, PIEnvironment.Dev);
             #endregion
 
             #region 3. Login into the platform
