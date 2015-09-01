@@ -23,7 +23,7 @@ From the Package Manager console, run the following command:
 
     PM> Install-Package PI.SDK 
 
-You can also install the Nuget Package from Visual Studio or Xamarin Studio IDEs.
+You can also install the Nuget Package from Visual Studio or Xamarin Studio IDEs, or just go to [http://www.nuget.org/packages/PI.SDK/](http://www.nuget.org/packages/PI.SDK/)
 
 **2. Get your ApplicationId, ApplicationSecret and CustomerId**
 
